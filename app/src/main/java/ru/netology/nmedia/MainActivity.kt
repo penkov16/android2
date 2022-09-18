@@ -28,16 +28,8 @@ class MainActivity : AppCompatActivity() {
             if (post.likedByMe) {
                 likes?.setImageResource(R.drawable.ic_liked_24)
             }
-            numberLikes?.text = post.likes.toString()
-            numberShare?.text = post.share.toString()
-
-            root.setOnClickListener {
-                Log.d("stuff", "stuff")
-            }
-
-            avatar.setOnClickListener {
-                Log.d("stuff", "avatar")
-            }
+            numberLikes?.text = getFormatedNumber(post.likes.toLong())
+            numberShare?.text = getFormatedNumber(post.share.toLong())
 
             share?.setOnClickListener {
                 post.shareByMe = !post.shareByMe
@@ -47,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                 numberShare?.text = getFormatedNumber(shareLong)
             }
 
-            likes?.setOnClickListener {
+            likes.setOnClickListener {
                 Log.d("stuff", "like")
                 post.likedByMe = !post.likedByMe
                 likes.setImageResource(
